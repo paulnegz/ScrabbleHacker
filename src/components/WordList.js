@@ -6,10 +6,6 @@ import Grid from '@material-ui/core/Grid';
 
 
 function WordList(props) {
-    if (props.tiles.length===0){
-        console.log("we here");
-        return null;
-    }
     return (
         // map is a for loop through properties
         props.tiles.map((tile)=>(
@@ -19,7 +15,6 @@ function WordList(props) {
         ))
     );
 }
-
 WordList.propTypes = {
     titles: PropTypes.array
 }

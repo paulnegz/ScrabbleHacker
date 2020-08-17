@@ -15,9 +15,11 @@ function WordItem(props) {
         
         <Card className={classes.root}>
             <CardContent>
+                <div className='title'>
                 <Typography variant="h5" component="h2" className={classes.title}>
                     {props.tile.name}
                 </Typography>
+                </div>
                 <Typography className={classes.pos} color="textSecondary">
                     {props.tile.figureOfSpeech}
                 </Typography>
@@ -37,7 +39,6 @@ const linkStye ={
     textDecoration: 'none',
     fontSize: '8px',
     fontFamily: "'Comfortaa', cursive",
-    textDecoration: 'underline',
 
 }
 const useStyles = makeStyles({
@@ -47,6 +48,7 @@ const useStyles = makeStyles({
       alignItems: 'left',
       textAlign: 'left',
       fontFamily: 'scab',
+
     },
     pos: {
       marginBottom: 1.5,
@@ -55,7 +57,7 @@ const useStyles = makeStyles({
 
     },
     title:{
-        // fontSize: '1.03rem',
+        fontSize: '0.9rem',
         fontFamily: 'scab',
         textTransform: 'capitalize',
     },

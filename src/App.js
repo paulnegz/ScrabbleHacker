@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState,  } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header';
@@ -7,18 +7,13 @@ import WordList from './components/WordList';
 import Owlbot  from 'owlbot-js';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
-import fs from 'browserify-fs'; 
 
 function App() {
   var client = Owlbot('6c4449b0427c47238f67e64e9c108d679aecca1d'); //key for API dictionary call
   function shorten(text,max) { //shorten definition
     return text && text.length > max ? text.slice(0,max).split(' ').slice(0, -1).join(' ') : text
 }
-  const [tiles, setTiles] = useState([]); ///defining state
-  
-  // useEffect(() => {
-  //   setTiles( (previousState, currentState)=>currentState );
-  // });
+  const [tiles, setTiles] = useState([  ]); ///defining state
 
   var addTiles = (title) =>{
     var words_array = [];
@@ -34,6 +29,7 @@ function App() {
       }
     }
     recursive(title,"");//makes all permutations and stores in array
+    console.log(words_array);
     checkDictionary(words_array);
   }
   var checkDictionary=(words_array)=>{
@@ -42,9 +38,6 @@ function App() {
       try{
         client.define(word)
         .then(result=>{
-          // console.log(result.word, result.definitions[0].type,);
-          // console.log( result.definitions[0].type);
-          // console.log( shorten(result.definitions[0].definition,70), '...' );
           var definiton = shorten(result.definitions[0].definition,70).concat( '...') ;
           const newTile = {
             name: result.word,
@@ -52,19 +45,12 @@ function App() {
             definition: definiton,
           };
           trial.push(newTile);
-          // setTiles([...tiles, trial]); //array of arrays but good state
-          // setTiles([...tiles, newTile]); //keeps updating state instead of adding, renders last option
+          setTiles((tiles)=>[...tiles, newTile]); //array of arrays but good state
          })
       }catch(error){}
     })
-    // finalAdd(trial);
-    setTiles(trial);
-  }
-  var finalAdd=(trial)=>{
     console.log(trial);
-    // setTiles(trial);
   }
-
   const useStyles = makeStyles((theme) => ({
     root: {
       flexGrow: 1,
@@ -79,7 +65,7 @@ function App() {
 
   //clear state for new game 
   var newGame =()=>{
-    setTiles([...[]]);
+    setTiles([]);
   }
 
   const classes = useStyles();   
