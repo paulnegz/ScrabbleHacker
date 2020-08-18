@@ -8,7 +8,11 @@ import Owlbot  from 'owlbot-js';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import words from 'an-array-of-english-words';
+import { createStore, applyMiddleware, compose } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
+const composeEnhancers = (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
+//daddy
 const dictionary = words.reduce((dict, word) => (Object.assign(dict, { [word]: {} })), {});//create an object of dictionary bigO(1)
 
 function App() {

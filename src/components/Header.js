@@ -13,7 +13,7 @@ function Header(props) {
             <h3 style={{fontFamily: 'scab',}}> PAUL's SCRABBLE HACK</h3>
             <hr style={{color: 'blue', margin: '5px 5px', border: '1px solid blue'}} />
             <input style={{fontFamily: "'Comfortaa', cursive",}}type="button" onClick={props.newGame} value="New Game"></input>
-            <Link style={linkStye} to="//paulnegedu.com/home" target="_blank"> BACK TO SITE </Link>
+            <Link style={linkStye} to="//paulnegedu.com/" target="_blank"> BACK TO SITE </Link>
             
         </header>
     )
