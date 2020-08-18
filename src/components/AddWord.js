@@ -35,7 +35,7 @@ function AddWord(props) {
                     name="word" 
                     value={word}
                     onChange={onChange} />
-                <input style={{marginTop: '24px',border: '.6px solid blue',}}
+                <input style={{marginTop: '24px',}}
                     type="submit"                    
                     value="SUBMIT" >
                 </input>

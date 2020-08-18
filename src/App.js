@@ -41,8 +41,8 @@ function App() {
     recursive(title,"");//makes all permutations and stores in array
     console.log(words_array);
     //checking the dictionary object
-    const filteredWordArray = words_array.filter(word => dictionary[word]);//foreach inside the filter
-
+    var filteredWordArray = words_array.filter(word => dictionary[word]);//foreach inside the filter
+    filteredWordArray=filteredWordArray.filter((item, index)=>filteredWordArray.indexOf(item)===index);//remove repetitions
     defineWord(filteredWordArray);
   }
   var defineWord=(words_array)=>{
@@ -90,7 +90,7 @@ function App() {
           <Route exact path="/" render = {props =>(
             <React.Fragment>
               <Header newGame={newGame}/>
-              <div style={{borderLeft: '1.5px solid blue', borderRight: '1.5px solid blue',  }}>
+              <div style={{Left: '1.5px solid blue', borderRight: '1.5px solid blue',  }}>
                 <AddWord  addTiles={addTiles}/>
                 <div className={classes.root}>
                   <Grid alignItems="center" container spacing={1}>
