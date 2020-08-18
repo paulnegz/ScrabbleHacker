@@ -31,7 +31,7 @@ function AddWord(props) {
             <form className={classes.root} noValidate autoComplete="off" onSubmit={Submit} style={{display: 'flex', alignItems: 'center',  margin: '4px 2px',}}>
                 <TextField 
                     id="outlined-basic" 
-                    label="random letters"
+                    label="min. 5 letters.."
                     type="text" 
                     name="word" 
                     value={word}

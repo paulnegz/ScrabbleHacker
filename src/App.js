@@ -83,6 +83,11 @@ function App() {
     setTiles([]);
     setTiles([]);
   }
+  //error message for less
+  // var notLong=()=>{
+  //   <h1>NOT ENOUGH</h1>
+  //   setTiles([]);
+  // }
 
   const classes = useStyles();   
   return (
@@ -93,7 +98,7 @@ function App() {
             <React.Fragment>
               <Header newGame={newGame}/>
               <div style={{Left: '1.5px solid blue', borderRight: '1.5px solid blue',  }}>
-                <AddWord  addTiles={addTiles}/>
+                <AddWord  addTiles={addTiles} />
                 <div className={classes.root}>
                   <Grid alignItems="center" container spacing={1}>
                     <WordList tiles={tiles} />
