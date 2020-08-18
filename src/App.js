@@ -48,7 +48,7 @@ function App() {
       try{
         client.define(word)
         .then(result=>{
-          var definiton = shorten(result.definitions[0].definition,62).concat( '...') ;
+          var definiton = shorten(result.definitions[0].definition,70).concat( '...') ;
           const newTile = {
             name: result.word,
             figureOfSpeech: result.definitions[0].type,
