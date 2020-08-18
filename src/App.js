@@ -7,6 +7,9 @@ import WordList from './components/WordList';
 import Owlbot  from 'owlbot-js';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
+import words from 'an-array-of-english-words';
+
+const dictionary = words.reduce((dict, word) => (Object.assign(dict, { [word]: {} })), {});//create an object of dictionary
 
 function App() {
   var client = Owlbot('6c4449b0427c47238f67e64e9c108d679aecca1d'); //key for API dictionary call
@@ -30,9 +33,12 @@ function App() {
     }
     recursive(title,"");//makes all permutations and stores in array
     console.log(words_array);
-    checkDictionary(words_array);
+    //checking the dictionary object
+    const filteredWordArray = words_array.filter(word => dictionary[word]);//foreach inside the filter
+
+    defineWord(filteredWordArray);
   }
-  var checkDictionary=(words_array)=>{
+  var defineWord=(words_array)=>{
     var trial= [];
      words_array.map(word=>{
       try{
@@ -47,6 +53,7 @@ function App() {
           trial.push(newTile);
           setTiles((tiles)=>[...tiles, newTile]); //array of arrays but good state
          })
+         .catch(error=>{})
       }catch(error){}
     })
     console.log(trial);
