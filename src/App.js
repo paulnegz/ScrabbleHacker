@@ -80,6 +80,8 @@ function App() {
   //clear state for new game 
   var newGame =()=>{
     setTiles([]);
+    setTiles([]);
+    setTiles([]);
   }
 
   const classes = useStyles();   

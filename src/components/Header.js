@@ -10,7 +10,7 @@ function Header(props) {
     return (
         <header style={headerStyle}>
             {/* <hr style={{color: 'blue', marginTop: '7px', border: '1px solid blue'}} /> */}
-            <h3 style={{fontFamily: 'scab',}}> PAUL's SCRABBLE HACK</h3>
+            <h3 style={{fontFamily: 'scab',}}> SCRABBLE HACK</h3>
             <hr style={{color: 'blue', margin: '5px 5px', border: '1px solid blue'}} />
             <input style={{fontFamily: "'Comfortaa', cursive",}}type="button" onClick={props.newGame} value="New Game"></input>
             <Link style={linkStye} to="//paulnegedu.com/" target="_blank"> BACK TO SITE </Link>
