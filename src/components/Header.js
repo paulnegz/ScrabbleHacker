@@ -12,8 +12,7 @@ function Header(props) {
             {/* <hr style={{color: 'blue', marginTop: '7px', border: '1px solid blue'}} /> */}
             <h3 style={{fontFamily: 'scab',}}> PAUL's SCRABBLE HACK</h3>
             <hr style={{color: 'blue', margin: '5px 5px', border: '1px solid blue'}} />
-            <Link style={linkStye} to="//scrabble-hacker.herokuapp.com/" > <input style={{fontFamily: "'Comfortaa', cursive",}}type="button" value="New Game"></input> </Link>
-            
+            <input style={{fontFamily: "'Comfortaa', cursive",}}type="button" value="New Game"></input>
             <Link style={linkStye} to="//paulnegedu.com/" target="_blank"> BACK TO SITE </Link>
             
         </header>
