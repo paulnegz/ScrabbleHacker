@@ -18,7 +18,10 @@ const dictionary = words.reduce((dict, word) => (Object.assign(dict, { [word]: {
 function App() {
   var client = Owlbot('6c4449b0427c47238f67e64e9c108d679aecca1d'); //key for API dictionary call
   function shorten(text,max) { //shorten definition
-    return text && text.length > max ? text.slice(0,max).split(' ').slice(0, -1).join(' ') : text
+    if (text.length>max){
+      return (text && text.length > max ? text.slice(0,max).split(' ').slice(0, -1).join(' ') : text).concat( '...');
+    }
+    return (text && text.length > max ? text.slice(0,max).split(' ').slice(0, -1).join(' ') : text);
 }
   const [tiles, setTiles] = useState([  ]); ///defining state
 
