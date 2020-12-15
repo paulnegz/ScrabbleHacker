@@ -35,7 +35,7 @@ function AddWord(props) {
                     label="min. 5 letters.."
                     type="text" 
                     name="word" 
-                    value={word}
+                    value={word.toLowerCase()}
                     onChange={onChange} />
                 <input style={{marginTop: '24px',}}
                     type="submit"                    
