@@ -68,8 +68,6 @@ function App() {
           {
             //checking for last word.
             //end loader!!!
-            console.log(index, "HERE");
-            setIsLoading(false);
             setIsLoading(false);
           }
         })
@@ -78,8 +76,6 @@ function App() {
           {
             //checking for last word.
             //end loader!!!
-            console.log("was error: ", error); 
-            setIsLoading(false);
             setIsLoading(false);
           }
          })
@@ -108,10 +104,7 @@ function App() {
   var newGame =()=>{
     setIsLoading(false);
     setTiles([]);
-    setIsLoading(false);
-    setTiles([]);
-    setTiles([]);
-    setIsLoading(false);
+
   }
   //error message for less
   // var notLong=()=>{
@@ -122,8 +115,6 @@ function App() {
 
   var changeLoad = ()=>{
     setIsLoading(true);
-    setIsLoading(true);
-    console.log(isLoading, "HELLO THERE");
   }
   
   const classes = useStyles();   

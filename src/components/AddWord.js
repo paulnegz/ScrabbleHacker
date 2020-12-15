@@ -21,7 +21,6 @@ function AddWord(props) {
     var Submit = (e) =>{
         e.preventDefault();
         props.changeLoad();
-        props.changeLoad();
         props.addTiles(word);
         setTitle('');
     }
