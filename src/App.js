@@ -115,8 +115,7 @@ function App() {
 
   var changeLoad = ()=>{
     setIsLoading(true);
-  }
-  
+  }  
   const classes = useStyles();   
   return (
     <Router> 
