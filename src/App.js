@@ -70,6 +70,7 @@ function App() {
             //end loader!!!
             console.log(index, "HERE");
             setIsLoading(false);
+            setIsLoading(false);
           }
         })
          .catch(error=>{
@@ -78,6 +79,7 @@ function App() {
             //checking for last word.
             //end loader!!!
             console.log("was error: ", error); 
+            setIsLoading(false);
             setIsLoading(false);
           }
          })
@@ -119,7 +121,7 @@ function App() {
 
 
   var changeLoad = ()=>{
-    setIsLoading(!isLoading);
+    setIsLoading(true);
     console.log(isLoading, "HELLO THERE");
   }
   
