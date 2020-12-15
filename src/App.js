@@ -21,28 +21,35 @@ function App() {
     return (text && text.length > max ? text.slice(0,max).split(' ').slice(0, -1).join(' ') : text);
 }
   const [tiles, setTiles] = useState([  ]); ///defining state
+  const [isLoading, setIsLoading] = useState(false);
 
-  var addTiles = (title) =>{
+  var addTiles = async (title) =>{
+    var filteredWordArray=await createPermutations(title);
+    defineWord(filteredWordArray);
+    
+  }
+  var createPermutations = async(title)=>{
     var words_array = [];
     var recursive=(randomWord, subWord )=>{
       var newWord = "";
       for (var i = 0; i < randomWord.length; i++)
       {
       newWord = subWord + randomWord.substr(i, 1);
-        if (newWord.length>2){
+        if (newWord.length>2){//only words longer than 2 letters allowed!!
         words_array.push(newWord);//add to array of permutated words	  
         }
       recursive(randomWord.substr(0, i) + randomWord.substr(i + 1), subWord + randomWord.substr(i, 1));
       }
     }
     recursive(title,"");//makes all permutations and stores in array
-    console.log(words_array);
+    // console.log(words_array);
     //checking the dictionary object
-    var filteredWordArray = words_array.filter(word => dictionary[word]);//foreach inside the filter
+    var filteredWordArray = words_array.filter(word => dictionary[word]);//foreach inside the filter. Searching through dictionary object
     filteredWordArray=filteredWordArray.filter((item, index)=>filteredWordArray.indexOf(item)===index);//remove repetitions
-    defineWord(filteredWordArray);
+    return filteredWordArray;
+    
   }
-  var defineWord=(words_array)=>{
+  var defineWord= async(words_array)=>{
     var trial= [];
      words_array.map(word=>{
       try{
@@ -60,7 +67,8 @@ function App() {
          .catch(error=>{})
       }catch(error){}
     })
-    console.log(trial);
+    // console.log(trial);
+    
   }
   const useStyles = makeStyles((theme) => ({
     root: {
@@ -86,19 +94,31 @@ function App() {
   //   setTiles([]);
   // }
 
+
+  var changeLoad = async()=>{
+    setIsLoading(!isLoading);
+    console.log("HERE");
+  }
   const classes = useStyles();   
   return (
     <Router> 
+      
       <div className="App">
         <header className="App-header">
           <Route exact path="/" render = {props =>(
             <React.Fragment>
               <Header newGame={newGame}/>
               <div style={{Left: '1.5px solid blue', borderRight: '1.5px solid blue',  }}>
-                <AddWord  addTiles={addTiles} />
+                <AddWord  addTiles={addTiles} changeLoad={changeLoad} />
                 <div className={classes.root}>
                   <Grid alignItems="center" container spacing={1}>
-                    <WordList tiles={tiles} />
+
+                    {isLoading ? (
+                      <div>Loading ...</div>
+                    ) : (
+                      <WordList tiles={tiles} />
+                    )}  
+
                   </Grid>
                 </div>
               </div>
