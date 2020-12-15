@@ -122,6 +122,7 @@ function App() {
 
   var changeLoad = ()=>{
     setIsLoading(true);
+    setIsLoading(true);
     console.log(isLoading, "HELLO THERE");
   }
   
