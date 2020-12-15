@@ -104,7 +104,9 @@ function App() {
 
   //clear state for new game 
   var newGame =()=>{
+    setIsLoading(false);
     setTiles([]);
+    setIsLoading(false);
     setTiles([]);
     setTiles([]);
     setIsLoading(false);
