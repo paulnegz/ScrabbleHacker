@@ -1,9 +1,10 @@
-import React, { useState,  } from 'react';
+import React, { useState,  useEffect } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header';
 import AddWord from './components/AddWord';
 import WordList from './components/WordList';
+import Spinner from './components/Spinner';
 import Owlbot  from 'owlbot-js';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
@@ -44,14 +45,14 @@ function App() {
     recursive(title,"");//makes all permutations and stores in array
     // console.log(words_array);
     //checking the dictionary object
-    var filteredWordArray = words_array.filter(word => dictionary[word]);//foreach inside the filter. Searching through dictionary object
+    var filteredWordArray = words_array.filter(word => dictionary[word]);//foreach inside the filter. Searching through dictionary
     filteredWordArray=filteredWordArray.filter((item, index)=>filteredWordArray.indexOf(item)===index);//remove repetitions
     return filteredWordArray;
     
   }
   var defineWord= async(words_array)=>{
     var trial= [];
-     words_array.map(word=>{
+     words_array.map((word, index)=>{
       try{
         client.define(word)
         .then(result=>{
@@ -63,10 +64,29 @@ function App() {
           };
           trial.push(newTile);
           setTiles((tiles)=>[...tiles, newTile]); //array of arrays but good state
+          if (index===words_array.length-1)
+          {
+            //checking for last word.
+            //end loader!!!
+            console.log(index, "HERE");
+            setIsLoading(false);
+          }
+        })
+         .catch(error=>{
+          if (index===words_array.length-1)
+          {
+            //checking for last word.
+            //end loader!!!
+            console.log("was error: ", error); 
+            setIsLoading(false);
+          }
          })
-         .catch(error=>{})
       }catch(error){}
+
     })
+    // .then(
+    //   changeLoad();
+    // )
     // console.log(trial);
     
   }
@@ -87,6 +107,7 @@ function App() {
     setTiles([]);
     setTiles([]);
     setTiles([]);
+    setIsLoading(false);
   }
   //error message for less
   // var notLong=()=>{
@@ -95,10 +116,11 @@ function App() {
   // }
 
 
-  var changeLoad = async()=>{
+  var changeLoad = ()=>{
     setIsLoading(!isLoading);
-    console.log("HERE");
+    console.log(isLoading, "HELLO THERE");
   }
+  
   const classes = useStyles();   
   return (
     <Router> 
@@ -109,15 +131,16 @@ function App() {
             <React.Fragment>
               <Header newGame={newGame}/>
               <div style={{Left: '1.5px solid blue', borderRight: '1.5px solid blue',  }}>
-                <AddWord  addTiles={addTiles} changeLoad={changeLoad} />
+                <AddWord  changeLoad={changeLoad} addTiles={addTiles} />
                 <div className={classes.root}>
+                  {isLoading ? (
+                        <Spinner />
+                      ) : ( <span></span> )}  
+                  
                   <Grid alignItems="center" container spacing={1}>
 
-                    {isLoading ? (
-                      <div>Loading ...</div>
-                    ) : (
-                      <WordList tiles={tiles} />
-                    )}  
+
+                    <WordList tiles={tiles} />
 
                   </Grid>
                 </div>

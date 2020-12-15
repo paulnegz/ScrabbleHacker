@@ -20,6 +20,7 @@ function AddWord(props) {
     }
     var Submit = (e) =>{
         e.preventDefault();
+        props.changeLoad();
         props.addTiles(word);
         setTitle('');
     }
@@ -28,7 +29,7 @@ function AddWord(props) {
     return (
         <div style={styleDiv}>
             {/* <form onSubmit={Submit} style={{display: 'flex', alignItems: 'center',  margin: '4px 2px',}}> */}
-            <form className={classes.root} noValidate autoComplete="off" onSubmit={Submit} style={{display: 'flex', alignItems: 'center',  margin: '4px 2px',}}>
+            <form className={classes.root } noValidate autoComplete="off" onSubmit={Submit} style={{display: 'flex', alignItems: 'center',  margin: '4px 2px',}}>
                 <TextField 
                     id="outlined-basic" 
                     label="min. 5 letters.."
