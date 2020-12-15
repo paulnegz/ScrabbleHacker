@@ -9,6 +9,7 @@ import Owlbot  from 'owlbot-js';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import words from 'an-array-of-english-words';
+import prefixfree from 'prefixfree';
 
 //daddy
 const dictionary = words.reduce((dict, word) => (Object.assign(dict, { [word]: {} })), {});//create an object of dictionary bigO(1)
