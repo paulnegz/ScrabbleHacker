@@ -1,4 +1,4 @@
-import React, { useState,  useEffect } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header';
@@ -48,6 +48,8 @@ function App() {
     //checking the dictionary object
     var filteredWordArray = words_array.filter(word => dictionary[word]);//foreach inside the filter. Searching through dictionary
     filteredWordArray=filteredWordArray.filter((item, index)=>filteredWordArray.indexOf(item)===index);//remove repetitions
+    
+    console.log("filtered",filteredWordArray);
     return filteredWordArray;
     
   }
@@ -57,11 +59,11 @@ function App() {
       try{
         client.define(word)
         .then(result=>{
-          var definiton = shorten(result.definitions[0].definition,70).concat( '...') ;
+          var definiton = shorten(result.definitions[0].definition,70) ;
           const newTile = {
-            name: result.word,
-            figureOfSpeech: result.definitions[0].type,
-            definition: definiton,
+            name: result.word.toLowerCase(),
+            figureOfSpeech: result.definitions[0].type.toLowerCase(),
+            definition: definiton.toLowerCase(),
           };
           trial.push(newTile);
           setTiles((tiles)=>[...tiles, newTile]); //array of arrays but good state
@@ -69,6 +71,7 @@ function App() {
           {
             //checking for last word.
             //end loader!!!
+            console.log("defined: ",trial);
             setIsLoading(false);
           }
         })
@@ -77,6 +80,7 @@ function App() {
           {
             //checking for last word.
             //end loader!!!
+            console.log("defined: ",trial);
             setIsLoading(false);
           }
          })
