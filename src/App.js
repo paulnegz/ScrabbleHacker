@@ -106,7 +106,7 @@ function App() {
   var newGame =()=>{
     setIsLoading(false);
     setTiles([]);
-    
+
   }
 
   var changeLoad = ()=>{
@@ -115,6 +115,7 @@ function App() {
   const classes = useStyles();   
   return (
     <Router> 
+
       
       <div className="App">
         <header className="App-header">
