@@ -87,10 +87,7 @@ function App() {
       }catch(error){}
 
     })
-    // .then(
-    //   changeLoad();
-    // )
-    // console.log(trial);
+
     
   }
   const useStyles = makeStyles((theme) => ({
@@ -109,14 +106,7 @@ function App() {
   var newGame =()=>{
     setIsLoading(false);
     setTiles([]);
-
   }
-  //error message for less
-  // var notLong=()=>{
-  //   <h1>NOT ENOUGH</h1>
-  //   setTiles([]);
-  // }
-
 
   var changeLoad = ()=>{
     setIsLoading(true);
@@ -138,10 +128,7 @@ function App() {
                       ) : ( <span></span> )}  
                   
                   <Grid alignItems="center" container spacing={1}>
-
-
                     <WordList tiles={tiles} />
-
                   </Grid>
                 </div>
               </div>
