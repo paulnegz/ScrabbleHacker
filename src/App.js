@@ -106,6 +106,7 @@ function App() {
   var newGame =()=>{
     setIsLoading(false);
     setTiles([]);
+    
   }
 
   var changeLoad = ()=>{
@@ -121,7 +122,7 @@ function App() {
             <React.Fragment>
               <Header newGame={newGame}/>
               <div style={{Left: '1.5px solid blue', borderRight: '1.5px solid blue',  }}>
-                <AddWord  changeLoad={changeLoad} addTiles={addTiles} />
+                <AddWord  changeLoad={changeLoad} addTiles={addTiles} newGame={newGame}/>
                 <div className={classes.root}>
                   {isLoading ? (
                         <Spinner />

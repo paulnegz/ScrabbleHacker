@@ -20,6 +20,7 @@ function AddWord(props) {
     }
     var Submit = (e) =>{
         e.preventDefault();
+        props.newGame();
         props.changeLoad();
         props.addTiles(word);
         setTitle('');
