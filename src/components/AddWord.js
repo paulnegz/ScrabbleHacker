@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
 function AddWord(props) {
     const [word, setTitle] = useState('');
     var onChange = (e)=>{
-        var word = e.target.value.split(/\s/).join('').toLowerCase();
+        var word = e.target.value.split(/\s/).join('').toLowerCase().replace(/[^a-zA-Z ]/g, "");
         setTitle(word);
     }
     var Submit = (e) =>{

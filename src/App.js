@@ -114,9 +114,7 @@ function App() {
   }  
   const classes = useStyles();   
   return (
-    <Router> 
-
-      
+    <Router>  
       <div className="App">
         <header className="App-header">
           <Route exact path="/" render = {props =>(
