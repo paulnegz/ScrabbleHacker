@@ -1,3 +1,14 @@
+I've been working on a [ScrabbleHacker](https://paulnegedu.com/projects/scrabble) and it is finally working! ScrabbleHacker is easy to use; simply enter at least 2 letters, click the SUBMIT button and the results will be displayed 😁.
+
+This is a single-page application created with ReactJS. I chose React because it efficiently updates and displays the
+right components when a new word is found.
+Using recursion, it creates every permutation of the word and pushes it to an array. For example, if you submit
+“dogs” the permutations are [d, do, dog, dg, dgo, o, od, odg...]
+
+To determine which permutations are English words, it uses a nodeJS package which provides an array of all English words. In order to be time-efficient, the ScrabbleHacker changes this array of English words to a dictionary object because object have a time-complexity of
+bigO(1)but arrays are bigO(n).
+
+If a permutation exists in the dictionary, then it is considered a solution. ScrabbleHacker calls Owlbot’s API to determine the figure of speech and provide the definition for each found word. Finally, the results saved as react components and displayed.
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
