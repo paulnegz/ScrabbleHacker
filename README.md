@@ -11,6 +11,8 @@ bigO(1)but arrays are bigO(n).
 If a permutation exists in the dictionary, then it is considered a solution. ScrabbleHacker calls Owlbot’s API to determine the figure of speech and provide the definition for each found word. Finally, the results saved as react components and displayed.
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+My biggest take-away from this project is online resources are helpful but reaching out to people with expertise is more effective. I’ll like to thank Kyle Berkley; he came up with the idea to change the array of English words to a dictionary object which really sped up the app especially for longer words - longer words have more permutations.
+
 ## Available Scripts
 
 In the project directory, you can run:
