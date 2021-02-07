@@ -16,6 +16,15 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 My biggest take-away from this project is online resources are helpful but reaching out to people with expertise is more effective. I’ll like to thank Kyle Berkley; he came up with the idea to change the array of English words to a dictionary object which really sped up the app especially for longer words - longer words have more permutations.
 
+## IMPROVEMENTS 
+1. Implemented a loader so users know when all words have been found (More User Friendly)
+2. Santizer input to prevent(sign, symbols and numbers) also changes all uppercase to lowercase letters (More Stable i.e. predictable input)
+3. Remove repitions which can occur when we have a double letter. E.g. "rr" produces [r, r, rr, rr] (More Functional)
+4. Added link to more complete definitions. (More User Friendly)
+5. Added option to play new game 
+
+
+
 ## Available Scripts
 
 In the project directory, you can run:
